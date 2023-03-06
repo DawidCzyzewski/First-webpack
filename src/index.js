@@ -33,3 +33,5 @@ document.addEventListener(
     });
   }, 250)
 );
+
+// Now if I want to use CSS to style it, I need to install libraries: npm install --save-dev css-loader to interprets @import and url() like import/require() and to resolve them and style-loader to inject CSS into the DOM: npm install --save-dev style-loader and added module in webpack.config.js
