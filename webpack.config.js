@@ -16,9 +16,11 @@ module.exports = {
     port: 9000,
   },
   module: {
-    rules: {
-      test: /\.css$/,
-      use: ["style-loader", "css-loader"],
-    },
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
 };
