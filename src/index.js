@@ -5,13 +5,14 @@
 // Difference between dependencies and devDependencies are the first are publicated, without them project won't work. Second (devDependencies) are need just by developer, for example webpack (or code-testers, bundlers, iters etc.). Client don't need this.
 //  To check if the lodash is working, I wrote basic function throttle on mouse move.
 import _ from "lodash";
+import { displayMouseCoords } from "./coordsDisplay";
 
-document.addEventListener(
-  "mousemove",
-  _.throttle((e) => {
-    console.log(e.x, e.y);
-  }, 250)
-);
+// document.addEventListener(
+//   "mousemove",
+//   _.throttle((e) => {
+//     console.log(e.x, e.y);
+//   }, 250)
+// );
 // To check if my bundler is working, I started webpack in terminal (command npx webpack). Now webpack bundled index.js from src folder and created main.js in dist folder.
 // I created file webpack.config.js and in it wrote basic configuration. watch: true is need to next line not to stop working script
 // I don't want to write npx webpack every time I want to bundle, so in package.json I change scripts: add "build": "webpack". Now I can start my webpack once (by added script: npm run build) and it will be looking for changes and changing on live.
@@ -19,3 +20,16 @@ document.addEventListener(
 // To check if my app is working I found webpack-dev-server and installed this library in dev dependencies (client won't need this ;) ) (command: npm install webpack-dev-server --save-dev). Now I can start site by command npx webpack serve. But it's now not working (cannot get), becouse I need to change options in webpack.config.js
 // It is all working, but now we need to have runned npm run build-dev (or npm run build-prod) in background and in second card npx webpack serve
 // So I created new script (dev) in package.json and now we can use just npm run dev and our server is working live in developer mode.
+// WEBPACK IS WORKING
+// Now I created coordsDisplay.js to get modules in my code. In this I added function to display mouse coords in div wrapper.
+// After I added function in throttle, import was added itself.
+
+document.addEventListener(
+  "mousemove",
+  _.throttle((e) => {
+    displayMouseCoords({
+      x: e.x,
+      y: e.y,
+    });
+  }, 250)
+);
